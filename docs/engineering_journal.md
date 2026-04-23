@@ -1,0 +1,63 @@
+﻿# Project Sprint & Engineering Log
+
+Incremental sprint updates.
+
+- **[2026-04-24T20:40:47]** feat(export): add CSV export and printable farm ledger report
+- **[2026-04-24T15:38:36]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-04-24T22:13:31]** fix(location): handle fallback geolocation for Maharashtra districts
+- **[2026-04-24T21:30:06]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-04-28T17:01:46]** style(ui): refine mobile responsive layout for farmer dashboard
+- **[2026-04-29T22:50:51]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-04-29T18:35:58]** feat(agronomy): add rule-based smart crop recommendation advisor
+- **[2026-04-30T10:01:06]** feat(agronomy): add rule-based smart crop recommendation advisor
+- **[2026-04-30T22:49:54]** fix(location): handle fallback geolocation for Maharashtra districts
+- **[2026-04-30T10:52:24]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-05-07T19:27:42]** perf(dashboard): optimize SVG donut chart rendering for expense categories
+- **[2026-05-08T17:36:37]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-05-08T17:42:59]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-05-11T13:49:19]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-05-12T20:50:38]** feat(agronomy): add rule-based smart crop recommendation advisor
+- **[2026-05-14T21:41:25]** fix(location): handle fallback geolocation for Maharashtra districts
+- **[2026-05-15T21:45:31]** feat(expenses): add offline expense logging with localStorage sync
+- **[2026-05-24T10:35:45]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-05-25T09:32:06]** feat(agronomy): add rule-based smart crop recommendation advisor
+- **[2026-05-26T18:04:19]** feat(export): add CSV export and printable farm ledger report
+- **[2026-05-27T14:14:08]** feat(export): add CSV export and printable farm ledger report
+- **[2026-05-29T10:38:16]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-06-08T22:56:40]** test(validator): add test coverage for farm project budget validator
+- **[2026-06-09T18:55:36]** feat(expenses): add offline expense logging with localStorage sync
+- **[2026-06-12T12:22:41]** fix(location): handle fallback geolocation for Maharashtra districts
+- **[2026-06-15T12:47:52]** fix(location): handle fallback geolocation for Maharashtra districts
+- **[2026-06-15T14:51:13]** style(ui): refine mobile responsive layout for farmer dashboard
+- **[2026-06-17T20:08:03]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-06-18T09:31:52]** feat(expenses): add offline expense logging with localStorage sync
+- **[2026-06-23T09:49:25]** feat(agronomy): add rule-based smart crop recommendation advisor
+- **[2026-06-23T16:18:50]** test(validator): add test coverage for farm project budget validator
+- **[2026-06-29T22:08:11]** feat(expenses): add offline expense logging with localStorage sync
+- **[2026-06-29T10:59:21]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-06-30T12:44:55]** style(ui): refine mobile responsive layout for farmer dashboard
+- **[2026-07-01T14:42:10]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-07-03T12:41:36]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-07-03T18:53:56]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-07-05T17:37:58]** perf(dashboard): optimize SVG donut chart rendering for expense categories
+- **[2026-07-05T17:14:49]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-07-06T19:07:50]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-07-09T10:46:51]** feat(export): add CSV export and printable farm ledger report
+- **[2026-07-14T17:35:33]** feat(expenses): add offline expense logging with localStorage sync
+- **[2026-07-14T09:11:20]** style(ui): refine mobile responsive layout for farmer dashboard
+- **[2026-07-15T19:52:18]** fix(location): handle fallback geolocation for Maharashtra districts
+- **[2026-07-15T18:07:34]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-07-20T17:28:59]** feat(expenses): add offline expense logging with localStorage sync
+- **[2026-07-21T16:23:37]** feat(export): add CSV export and printable farm ledger report
+- **[2026-07-22T15:08:21]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-07-22T18:47:07]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-07-23T09:25:43]** test(validator): add test coverage for farm project budget validator
+- **[2026-07-30T12:27:59]** feat(export): add CSV export and printable farm ledger report
+- **[2026-07-31T16:58:22]** refactor(formulas): modularize crop yield & profit estimation calculations
+- **[2026-08-02T18:47:03]** test(validator): add test coverage for farm project budget validator
+- **[2026-08-04T16:06:58]** feat(apmc): integrate real-time APMC mandi market price ticker
+- **[2026-08-04T11:34:04]** style(ui): refine mobile responsive layout for farmer dashboard
+- **[2026-08-05T12:47:51]** perf(dashboard): optimize SVG donut chart rendering for expense categories
+- **[2026-08-06T12:20:42]** feat(agronomy): add rule-based smart crop recommendation advisor
+- **[2026-08-10T10:58:05]** fix(i18n): resolve Marathi and Hindi translation encoding edge case
+- **[2026-08-14T18:54:55]** feat(agronomy): add rule-based smart crop recommendation advisor
