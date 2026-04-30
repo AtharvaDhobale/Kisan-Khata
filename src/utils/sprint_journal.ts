@@ -6,3 +6,4 @@
 // [2026-04-27T17:02:31] perf(dashboard): optimize SVG donut chart rendering for expense categories
 // [2026-04-29T17:14:57] fix(i18n): resolve Marathi and Hindi translation encoding edge case
 // [2026-04-29T22:16:18] fix(location): handle fallback geolocation for Maharashtra districts
+// [2026-04-30T19:47:57] fix(i18n): resolve Marathi and Hindi translation encoding edge case
