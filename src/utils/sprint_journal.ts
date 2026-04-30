@@ -7,3 +7,4 @@
 // [2026-04-29T17:14:57] fix(i18n): resolve Marathi and Hindi translation encoding edge case
 // [2026-04-29T22:16:18] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-04-30T19:47:57] fix(i18n): resolve Marathi and Hindi translation encoding edge case
+// [2026-04-30T13:19:14] refactor(formulas): modularize crop yield & profit estimation calculations
