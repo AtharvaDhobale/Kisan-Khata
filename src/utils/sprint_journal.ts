@@ -11,3 +11,4 @@
 // [2026-04-30T10:14:12] perf(dashboard): optimize SVG donut chart rendering for expense categories
 // [2026-04-30T10:40:54] test(validator): add test coverage for farm project budget validator
 // [2026-05-01T16:49:10] perf(dashboard): optimize SVG donut chart rendering for expense categories
+// [2026-05-01T15:41:00] feat(apmc): integrate real-time APMC mandi market price ticker
