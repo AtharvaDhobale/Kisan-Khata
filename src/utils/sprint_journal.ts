@@ -16,3 +16,4 @@
 // [2026-05-10T21:35:08] feat(apmc): integrate real-time APMC mandi market price ticker
 // [2026-05-10T22:31:29] perf(dashboard): optimize SVG donut chart rendering for expense categories
 // [2026-05-15T11:27:25] feat(agronomy): add rule-based smart crop recommendation advisor
+// [2026-05-15T13:52:50] refactor(formulas): modularize crop yield & profit estimation calculations
