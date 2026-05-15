@@ -15,3 +15,4 @@
 // [2026-05-07T14:23:12] feat(expenses): add offline expense logging with localStorage sync
 // [2026-05-10T21:35:08] feat(apmc): integrate real-time APMC mandi market price ticker
 // [2026-05-10T22:31:29] perf(dashboard): optimize SVG donut chart rendering for expense categories
+// [2026-05-15T11:27:25] feat(agronomy): add rule-based smart crop recommendation advisor
