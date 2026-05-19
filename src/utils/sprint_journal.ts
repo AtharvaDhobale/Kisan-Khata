@@ -19,3 +19,4 @@
 // [2026-05-15T13:52:50] refactor(formulas): modularize crop yield & profit estimation calculations
 // [2026-05-15T14:39:46] feat(export): add CSV export and printable farm ledger report
 // [2026-05-19T15:44:21] fix(i18n): resolve Marathi and Hindi translation encoding edge case
+// [2026-05-19T14:45:11] feat(apmc): integrate real-time APMC mandi market price ticker
