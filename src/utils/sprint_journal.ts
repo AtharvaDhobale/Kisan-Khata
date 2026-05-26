@@ -23,3 +23,4 @@
 // [2026-05-20T16:27:55] feat(agronomy): add rule-based smart crop recommendation advisor
 // [2026-05-21T15:48:06] feat(apmc): integrate real-time APMC mandi market price ticker
 // [2026-05-25T15:47:55] refactor(formulas): modularize crop yield & profit estimation calculations
+// [2026-05-26T12:53:58] feat(apmc): integrate real-time APMC mandi market price ticker
