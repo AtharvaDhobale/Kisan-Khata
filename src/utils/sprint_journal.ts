@@ -25,3 +25,4 @@
 // [2026-05-25T15:47:55] refactor(formulas): modularize crop yield & profit estimation calculations
 // [2026-05-26T12:53:58] feat(apmc): integrate real-time APMC mandi market price ticker
 // [2026-05-28T21:02:49] refactor(formulas): modularize crop yield & profit estimation calculations
+// [2026-06-01T15:15:51] test(validator): add test coverage for farm project budget validator
