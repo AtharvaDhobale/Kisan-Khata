@@ -27,3 +27,4 @@
 // [2026-05-28T21:02:49] refactor(formulas): modularize crop yield & profit estimation calculations
 // [2026-06-01T15:15:51] test(validator): add test coverage for farm project budget validator
 // [2026-06-02T13:33:24] test(validator): add test coverage for farm project budget validator
+// [2026-06-03T09:16:19] feat(export): add CSV export and printable farm ledger report
