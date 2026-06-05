@@ -29,3 +29,4 @@
 // [2026-06-02T13:33:24] test(validator): add test coverage for farm project budget validator
 // [2026-06-03T09:16:19] feat(export): add CSV export and printable farm ledger report
 // [2026-06-04T21:06:24] test(validator): add test coverage for farm project budget validator
+// [2026-06-05T17:22:15] feat(export): add CSV export and printable farm ledger report
