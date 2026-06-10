@@ -31,3 +31,4 @@
 // [2026-06-04T21:06:24] test(validator): add test coverage for farm project budget validator
 // [2026-06-05T17:22:15] feat(export): add CSV export and printable farm ledger report
 // [2026-06-08T18:57:37] refactor(formulas): modularize crop yield & profit estimation calculations
+// [2026-06-10T17:54:42] style(ui): refine mobile responsive layout for farmer dashboard
