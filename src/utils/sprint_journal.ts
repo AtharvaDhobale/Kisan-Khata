@@ -33,3 +33,4 @@
 // [2026-06-08T18:57:37] refactor(formulas): modularize crop yield & profit estimation calculations
 // [2026-06-10T17:54:42] style(ui): refine mobile responsive layout for farmer dashboard
 // [2026-06-10T19:45:09] fix(i18n): resolve Marathi and Hindi translation encoding edge case
+// [2026-06-11T11:18:01] perf(dashboard): optimize SVG donut chart rendering for expense categories
