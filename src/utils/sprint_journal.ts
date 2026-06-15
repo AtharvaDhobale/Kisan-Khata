@@ -36,3 +36,4 @@
 // [2026-06-11T11:18:01] perf(dashboard): optimize SVG donut chart rendering for expense categories
 // [2026-06-13T22:22:46] feat(export): add CSV export and printable farm ledger report
 // [2026-06-13T11:19:09] feat(export): add CSV export and printable farm ledger report
+// [2026-06-15T17:47:53] feat(agronomy): add rule-based smart crop recommendation advisor
