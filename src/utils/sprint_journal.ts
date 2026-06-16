@@ -37,3 +37,4 @@
 // [2026-06-13T22:22:46] feat(export): add CSV export and printable farm ledger report
 // [2026-06-13T11:19:09] feat(export): add CSV export and printable farm ledger report
 // [2026-06-15T17:47:53] feat(agronomy): add rule-based smart crop recommendation advisor
+// [2026-06-16T21:48:08] fix(i18n): resolve Marathi and Hindi translation encoding edge case
