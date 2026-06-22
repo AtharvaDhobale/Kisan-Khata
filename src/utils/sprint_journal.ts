@@ -41,3 +41,4 @@
 // [2026-06-17T19:22:02] feat(export): add CSV export and printable farm ledger report
 // [2026-06-21T13:58:32] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-06-22T19:13:09] refactor(formulas): modularize crop yield & profit estimation calculations
+// [2026-06-22T13:13:19] fix(i18n): resolve Marathi and Hindi translation encoding edge case
