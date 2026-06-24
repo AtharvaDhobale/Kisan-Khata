@@ -44,3 +44,4 @@
 // [2026-06-22T13:13:19] fix(i18n): resolve Marathi and Hindi translation encoding edge case
 // [2026-06-23T15:05:46] feat(agronomy): add rule-based smart crop recommendation advisor
 // [2026-06-23T09:22:03] feat(agronomy): add rule-based smart crop recommendation advisor
+// [2026-06-24T20:25:55] style(ui): refine mobile responsive layout for farmer dashboard
