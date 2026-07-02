@@ -52,3 +52,4 @@
 // [2026-06-28T18:13:39] refactor(formulas): modularize crop yield & profit estimation calculations
 // [2026-06-30T13:58:53] perf(dashboard): optimize SVG donut chart rendering for expense categories
 // [2026-07-02T09:57:29] fix(i18n): resolve Marathi and Hindi translation encoding edge case
+// [2026-07-02T22:00:25] fix(location): handle fallback geolocation for Maharashtra districts
