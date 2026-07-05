@@ -126,10 +126,10 @@ export const languages: { code: Language; name: string; nativeName: string }[] =
 
 export const translations: Record<Language, TranslationSet> = {
   en: {
-    appTitle: 'Farmoholic',
-    appSubtitle: 'Crop Expense Tracker & AI Market Analyst',
+    appTitle: 'Kisan Khata',
+    appSubtitle: 'किसान खाता — Crop Ledger & AI Market Analyst',
     selectLanguage: 'Select Language',
-    onboardingWelcome: 'Welcome to Farmoholic!',
+    onboardingWelcome: 'Welcome to Kisan Khata!',
     onboardingDesc: 'Please set up your basic farm details to start tracking crop expenses and checking live local Mandi rates.',
     farmerName: 'Farmer Name',
     farmerNamePlaceholder: 'Enter your name',
@@ -205,20 +205,20 @@ export const translations: Record<Language, TranslationSet> = {
     costPerAcre: 'Cost per Acre',
     yieldPerAcre: 'Yield per Acre',
     mandiSource: 'Live Agmarknet prices based on location',
-    aiTitle: 'Farmoholic AI Analyst',
+    aiTitle: 'Kisan Khata AI Analyst',
     aiSubtitle: 'Instant advice on expenses, local pricing, and profitability',
     aiChatPlaceholder: 'Ask something, e.g. "How can I reduce fertilizer cost for wheat?"',
     aiSend: 'Ask AI',
     aiAnalysing: 'AI is analyzing your farm data...',
     aiSuggestions: 'Farming Recommendations',
-    askAi: 'Ask Farmoholic AI',
+    askAi: 'Ask Kisan Khata AI',
     aiTipFertilizer: 'Fertilizer Advice',
     aiTipPest: 'Bugs & Weeds help',
     aiTipRain: 'Rain Prediction',
     aiTipTiming: 'Crop Timing'
   },
   hi: {
-    appTitle: 'फ़ार्मोहोलिक (Farmoholic)',
+    appTitle: 'किसान खाता',
     appSubtitle: 'फ़सल ख़र्च ट्रैकर और एआई मंडी विश्लेषक',
     selectLanguage: 'भाषा चुनें',
     onboardingWelcome: 'फ़ार्मोहोलिक में आपका स्वागत है!',
@@ -310,7 +310,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'बुवाई का सही समय'
   },
   mr: {
-    appTitle: 'फार्मोहोलिक (Farmoholic)',
+    appTitle: 'किसान खाता',
     appSubtitle: 'पीक खर्च ट्रॅकर आणि एआय बाजार विश्लेषक',
     selectLanguage: 'भाषा निवडा',
     onboardingWelcome: 'फार्मोहोलिक मध्ये आपले स्वागत आहे!',
@@ -402,7 +402,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'पेरणीची योग्य वेळ'
   },
   pa: {
-    appTitle: 'ਫਾਰਮੋਹੋਲਿਕ (Farmoholic)',
+    appTitle: 'ਕਿਸਾਨ ਖਾਤਾ',
     appSubtitle: 'ਫ਼ਸਲ ਖ਼ਰਚ ਟ੍ਰੈਕਰ ਅਤੇ ਏਆਈ ਮੰਡੀ ਵਿਸ਼ਲੇਸ਼ਕ',
     selectLanguage: 'ਭਾਸ਼ਾ ਚੁਣੋ',
     onboardingWelcome: 'ਫਾਰਮੋਹੋਲਿਕ ਵਿੱਚ ਤੁਹਾਡਾ ਸੁਆਗਤ ਹੈ!',
@@ -494,7 +494,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'ਬਿਜਾਈ ਦਾ ਸਹੀ ਸਮਾਂ'
   },
   te: {
-    appTitle: 'ఫార్మోహోలిక్ (Farmoholic)',
+    appTitle: 'కిసాన్ ఖాతా',
     appSubtitle: 'పంట ఖర్చుల ట్రాకర్ & AI మార్కెట్ విశ్లేషకుడు',
     selectLanguage: 'భాషను ఎంచుకోండి',
     onboardingWelcome: 'ఫార్మోహోలిక్ కు స్వాగతం!',
@@ -586,7 +586,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'సాగుకు అనుకూల సమయం'
   },
   ta: {
-    appTitle: 'பார்மோஹோலிக் (Farmoholic)',
+    appTitle: 'கிசான் காத்தா',
     appSubtitle: 'பயிர் செலவு கண்காணிப்பாளர் & AI சந்தை ஆய்வாளர்',
     selectLanguage: 'மொழியைத் தேர்ந்தெடுக்கவும்',
     onboardingWelcome: 'பார்மோஹோலிக்-கு உங்களை வரவேற்கிறோம்!',
@@ -678,7 +678,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'விதைப்பதற்கான சரியான நேரம்'
   },
   bn: {
-    appTitle: 'ফার্মোহোলিক (Farmoholic)',
+    appTitle: 'কিসান খাতা',
     appSubtitle: 'ফসল খরচ ট্র্যাকার ও এআই মান্ডি বিশ্লেষক',
     selectLanguage: 'ভাষা নির্বাচন করুন',
     onboardingWelcome: 'ফার্মোহোলিকে আপনাকে স্বাগত!',
@@ -770,7 +770,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'চাষের সঠিক সময়সূচি'
   },
   kn: {
-    appTitle: 'ಫಾರ್ಮೋಹಾಲಿಕ್ (Farmoholic)',
+    appTitle: 'ಕಿಸಾನ್ ಖಾತಾ',
     appSubtitle: 'ಬೆಳೆ ವೆಚ್ಚ ಟ್ರ್ಯಾಕರ್ ಮತ್ತು AI ಮಾರುಕಟ್ಟೆ ವಿಶ್ಲೇಷಕ',
     selectLanguage: 'ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ',
     onboardingWelcome: 'ಫಾರ್ಮೋಹಾಲಿಕ್ ಗೆ ಸುಸ್ವಾಗತ!',
@@ -862,7 +862,7 @@ export const translations: Record<Language, TranslationSet> = {
     aiTipTiming: 'ಬಿತ್ತನೆಯ ಸೂಕ್ತ ಸಮಯ'
   },
   gu: {
-    appTitle: 'ફાર્મોહોલિક (Farmoholic)',
+    appTitle: 'કિસાન ખાતા',
     appSubtitle: 'પાક ખર્ચ ટ્રેકર અને AI બજાર વિશ્લેષક',
     selectLanguage: 'ભાષા પસંદ કરો',
     onboardingWelcome: 'ફાર્મોહોલિકમાં આપનું હાર્દિક સ્વાગત છે!',

@@ -78,8 +78,8 @@ export default function App() {
             <div className="onboard-logo">
               <Sprout size={36} color="white" />
             </div>
-            <h2 className="onboard-title">Welcome to Farmoholic</h2>
-            <p className="onboard-subtitle">Your smart farm management companion. Set up your profile to get started.</p>
+            <h2 className="onboard-title">किसान खाता</h2>
+            <p className="onboard-subtitle">किसान का डिजिटल खाता बही — Your smart farm ledger. Set up your profile to get started.</p>
           </div>
 
           <div className="form-group">
@@ -266,7 +266,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `Farmoholic_${activeProject.name}.csv`);
+    link.setAttribute('download', `KisanKhata_${activeProject.name}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

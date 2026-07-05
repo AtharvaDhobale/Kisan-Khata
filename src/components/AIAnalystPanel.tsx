@@ -140,7 +140,7 @@ export const AIAnalystPanel: React.FC<AIAnalystPanelProps> = ({ project, t, lang
               <div key={msg.id} className={`chat-message ${msg.sender}`}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px', opacity: 0.7, fontSize: '11px', fontWeight: 'bold' }}>
                   {msg.sender === 'ai' ? <Bot size={12} /> : <User size={12} />}
-                  {msg.sender === 'ai' ? 'Farmoholic AI' : 'Farmer'}
+                  {msg.sender === 'ai' ? 'Kisan Khata AI' : 'Farmer'}
                 </div>
                 <div>{msg.text}</div>
               </div>
@@ -150,7 +150,7 @@ export const AIAnalystPanel: React.FC<AIAnalystPanelProps> = ({ project, t, lang
               <div className="chat-message ai">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px', opacity: 0.7, fontSize: '11px', fontWeight: 'bold' }}>
                   <Bot size={12} />
-                  Farmoholic AI
+                  Kisan Khata AI
                 </div>
                 <div className="ai-typing-dots" style={{ color: 'var(--text-muted)' }}>
                   {t.aiAnalysing}
