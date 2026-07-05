@@ -1,0 +1,12 @@
+target/
+src/main/java/
+src/main/resources/
+pom.xml
+.mvn/
+*.jar
+*.war
+node_modules/
+.git/
+cleanup.bat
+final_push.bat
+push_springboot.bat
