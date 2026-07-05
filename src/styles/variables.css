@@ -1,0 +1,67 @@
+:root {
+  /* ══════════════════════════════════════════
+     FARMOHOLIC — Premium Green Theme
+     Fresh, professional, farmer-friendly
+  ══════════════════════════════════════════ */
+
+  /* Background Layers */
+  --bg-primary: #f0fdf4;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f6fef9;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  /* Brand Greens */
+  --primary: #16a34a;
+  --primary-dark: #15803d;
+  --primary-hover: #166534;
+  --primary-glow: rgba(22, 163, 74, 0.15);
+  --primary-subtle: rgba(22, 163, 74, 0.07);
+  --primary-border: rgba(22, 163, 74, 0.25);
+
+  /* Saffron/Orange Accent */
+  --accent-saffron: #ea580c;
+  --accent-saffron-hover: #c2410c;
+  --accent-saffron-glow: rgba(234, 88, 12, 0.12);
+  --accent-saffron-subtle: rgba(234, 88, 12, 0.07);
+
+  /* Blue Accent */
+  --accent-blue: #2563eb;
+  --accent-blue-glow: rgba(37, 99, 235, 0.12);
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  /* Borders */
+  --border-glass: #e2e8f0;
+  --border-active: #4ade80;
+  --border-hover: #86efac;
+
+  /* Status Colors */
+  --status-ongoing: #d97706;
+  --status-harvested: #2563eb;
+  --status-sold: #16a34a;
+
+  /* Layout */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+  --shadow-glow: 0 4px 20px rgba(22,163,74,0.06), 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-glow-strong: 0 8px 24px rgba(22,163,74,0.14), 0 2px 6px rgba(0,0,0,0.06);
+}
