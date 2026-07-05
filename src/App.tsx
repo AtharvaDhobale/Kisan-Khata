@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import type { FarmProject, ProjectExpense } from './utils/helpers';
+import type { FarmProject, ProjectExpense, UserSettings } from './utils/helpers';
 import {
   loadProjects,
   saveProjects,
@@ -38,37 +38,77 @@ import {
 import './styles/App.css';
 
 export default function App() {
-  const [profile, setProfile] = useState<FarmerProfile | null>(loadProfile());
+  const [profile, setProfile] = useState<FarmerProfile | null>(null);
   const [onboardName, setOnboardName] = useState('');
   const [onboardLang, setOnboardLang] = useState<Language>('en');
   const [projects, setProjects] = useState<FarmProject[]>([]);
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
-  const [settings, setSettings] = useState(loadSettings());
+  const [settings, setSettings] = useState<UserSettings>(loadSettings());
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   
   // Modals visibility
   const [showProjectModal, setShowProjectModal] = useState(false);
   const [showExpenseModal, setShowExpenseModal] = useState(false);
   const [editingProject, setEditingProject] = useState<FarmProject | undefined>(undefined);
 
-  // Load projects from localStorage on mount
+  // Load from Spring Boot API on mount (fallback to localStorage if server is offline)
   useEffect(() => {
-    const savedProjs = loadProjects();
-    setProjects(savedProjs);
-    if (savedProjs.length > 0) {
-      setActiveProjectId(savedProjs[0].id);
-    }
+    const initLoad = async () => {
+      try {
+        const [profileRes, projectsRes, settingsRes] = await Promise.all([
+          fetch('/api/profile'),
+          fetch('/api/projects'),
+          fetch('/api/settings')
+        ]);
+        
+        const profileData = profileRes.status === 200 ? await profileRes.json() : null;
+        const projectsData = await projectsRes.json();
+        const settingsData = await settingsRes.json();
+        
+        setProfile(profileData);
+        setProjects(projectsData);
+        setSettings(settingsData);
+        
+        if (projectsData.length > 0) {
+          setActiveProjectId(projectsData[0].id);
+        }
+      } catch (error) {
+        console.warn("Failed to load from Spring Boot API, falling back to localStorage", error);
+        const localProfile = loadProfile();
+        setProfile(localProfile);
+        const localProjs = loadProjects();
+        setProjects(localProjs);
+        setSettings(loadSettings());
+        if (localProjs.length > 0) {
+          setActiveProjectId(localProjs[0].id);
+        }
+      } finally {
+        setIsInitialLoading(false);
+      }
+    };
+    initLoad();
   }, []);
 
   // Save projects to localStorage whenever they change
   useEffect(() => {
-    saveProjects(projects);
-  }, [projects]);
+    if (!isInitialLoading) {
+      saveProjects(projects);
+    }
+  }, [projects, isInitialLoading]);
 
   // Save settings whenever they change
   useEffect(() => {
-    saveSettings(settings);
-  }, [settings]);
+    if (!isInitialLoading) {
+      saveSettings(settings);
+      // Sync settings to Spring Boot API in background
+      fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(settings)
+      }).catch(e => console.warn("Failed to sync settings to API", e));
+    }
+  }, [settings, isInitialLoading]);
 
   if (!profile) {
     return (
@@ -111,18 +151,49 @@ export default function App() {
           <button
             className="btn btn-primary"
             style={{ width: '100%', marginTop: '8px', padding: '14px', fontSize: '16px' }}
-            onClick={() => {
+            onClick={async () => {
               if (onboardName.trim()) {
                 const newProfile = { name: onboardName, language: onboardLang, state: 'Maharashtra', district: 'Pune' };
                 saveProfile(newProfile);
                 setProfile(newProfile);
-                setSettings({ ...settings, language: onboardLang });
+                const updatedSettings = { ...settings, language: onboardLang };
+                setSettings(updatedSettings);
+                
+                // Sync profile and settings to API
+                try {
+                  await Promise.all([
+                    fetch('/api/profile', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(newProfile)
+                    }),
+                    fetch('/api/settings', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify(updatedSettings)
+                    })
+                  ]);
+                } catch (e) {
+                  console.warn("Failed to sync onboarding details to Spring Boot API", e);
+                }
               }
             }}
           >
             <Sprout size={18} />
             Start Farming 🌱
           </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (isInitialLoading) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
+        <div className="panel-card" style={{ maxWidth: '320px', width: '100%', textAlign: 'center', padding: '30px' }}>
+          <Sprout size={48} className="spin-anim" color="var(--primary)" style={{ margin: '0 auto 16px' }} />
+          <h3 style={{ color: 'var(--primary)', marginBottom: '8px', fontWeight: 800 }}>Loading Kisan Khata...</h3>
+          <p style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 500 }}>Connecting to secure farm ledger</p>
         </div>
       </div>
     );
@@ -165,29 +236,42 @@ export default function App() {
   const hasExpenses = activeExpensesTotal > 0;
 
   // Add/Edit project handlers
-  const handleSaveProject = (projData: Omit<FarmProject, 'id' | 'expenses'>) => {
+  const handleSaveProject = async (projData: Omit<FarmProject, 'id' | 'expenses'>) => {
+    let updatedProj: FarmProject;
     if (editingProject) {
+      updatedProj = { ...editingProject, ...projData };
       setProjects(prev =>
         prev.map(p =>
           p.id === editingProject.id
-            ? { ...p, ...projData }
+            ? updatedProj
             : p
         )
       );
       setEditingProject(undefined);
     } else {
-      const newProj: FarmProject = {
+      updatedProj = {
         ...projData,
         id: Date.now().toString(),
         expenses: []
       };
-      setProjects(prev => [newProj, ...prev]);
-      setActiveProjectId(newProj.id);
+      setProjects(prev => [updatedProj, ...prev]);
+      setActiveProjectId(updatedProj.id);
     }
     setShowProjectModal(false);
+
+    // Sync to API
+    try {
+      await fetch('/api/projects', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedProj)
+      });
+    } catch (e) {
+      console.warn("Failed to sync project to Spring Boot API", e);
+    }
   };
 
-  const handleDeleteProject = (id: string, e: React.MouseEvent) => {
+  const handleDeleteProject = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     if (confirm(t.deleteProject + '?')) {
       const updated = projects.filter(p => p.id !== id);
@@ -195,35 +279,75 @@ export default function App() {
       if (activeProjectId === id) {
         setActiveProjectId(updated.length > 0 ? updated[0].id : null);
       }
+
+      // Sync delete to API
+      try {
+        await fetch(`/api/projects/${id}`, {
+          method: 'DELETE'
+        });
+      } catch (e) {
+        console.warn("Failed to delete project from Spring Boot API", e);
+      }
     }
   };
 
   // Add/Delete expense handlers
-  const handleSaveExpense = (expData: Omit<ProjectExpense, 'id'>) => {
+  const handleSaveExpense = async (expData: Omit<ProjectExpense, 'id'>) => {
     if (!activeProjectId) return;
     const newExpense: ProjectExpense = {
       ...expData,
       id: Date.now().toString()
     };
+    
+    // Find active project
+    const activeProj = projects.find(p => p.id === activeProjectId);
+    if (!activeProj) return;
+
+    const updatedProj = { ...activeProj, expenses: [newExpense, ...activeProj.expenses] };
     setProjects(prev =>
       prev.map(p =>
         p.id === activeProjectId
-          ? { ...p, expenses: [newExpense, ...p.expenses] }
+          ? updatedProj
           : p
       )
     );
     setShowExpenseModal(false);
+
+    // Sync expense to API
+    try {
+      await fetch(`/api/projects/${activeProjectId}/expenses`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newExpense)
+      });
+    } catch (e) {
+      console.warn("Failed to add expense to Spring Boot API", e);
+    }
   };
 
-  const handleDeleteExpense = (expenseId: string) => {
+  const handleDeleteExpense = async (expenseId: string) => {
     if (!activeProjectId) return;
+    
+    const activeProj = projects.find(p => p.id === activeProjectId);
+    if (!activeProj) return;
+
+    const updatedProj = { ...activeProj, expenses: activeProj.expenses.filter(e => e.id !== expenseId) };
     setProjects(prev =>
       prev.map(p =>
         p.id === activeProjectId
-          ? { ...p, expenses: p.expenses.filter(e => e.id !== expenseId) }
+          ? updatedProj
           : p
       )
     );
+
+    // Sync delete to API
+    try {
+      await fetch(`/api/expenses/${expenseId}`, {
+        method: 'DELETE'
+      });
+    } catch (e) {
+      console.warn("Failed to delete expense from Spring Boot API", e);
+    }
   };
 
   // Geolocation trigger
@@ -232,28 +356,52 @@ export default function App() {
     const loc = await autoDetectLocation();
     
     if (activeProject) {
+      const updatedProj = { ...activeProject, state: loc.state, district: loc.district };
       setProjects(prev =>
         prev.map(p =>
           p.id === activeProjectId
-            ? { ...p, state: loc.state, district: loc.district }
+            ? updatedProj
             : p
         )
       );
+
+      // Sync to API
+      try {
+        await fetch('/api/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedProj)
+        });
+      } catch (e) {
+        console.warn("Failed to update project location to Spring Boot API", e);
+      }
     } else {
       setSettings(prev => ({ ...prev, state: loc.state, district: loc.district }));
     }
     setIsLoadingLocation(false);
   };
 
-  const handleUpdateProjectLocation = (state: string, district: string) => {
+  const handleUpdateProjectLocation = async (state: string, district: string) => {
     if (activeProject) {
+      const updatedProj = { ...activeProject, state, district };
       setProjects(prev =>
         prev.map(p =>
           p.id === activeProjectId
-            ? { ...p, state, district }
+            ? updatedProj
             : p
         )
       );
+
+      // Sync to API
+      try {
+        await fetch('/api/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedProj)
+        });
+      } catch (e) {
+        console.warn("Failed to update project location to Spring Boot API", e);
+      }
     } else {
       setSettings(prev => ({ ...prev, state, district }));
     }

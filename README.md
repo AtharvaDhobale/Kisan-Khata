@@ -110,33 +110,58 @@ Indian farmers face 3 core problems this app solves:
 
 ### Prerequisites
 
+- **Java Development Kit (JDK)** version 17
+- **Apache Maven** version 3.8+ (already configured on command line)
 - **Node.js** ≥ 18.x
 - **npm** ≥ 9.x
 
-### Installation
+### Running the App Locally
 
+Kisan Khata can be run as a full-stack Spring Boot + React application.
+
+#### Step 1: Start the Spring Boot Backend
 ```bash
-# 1. Clone the repository
-git clone https://github.com/AtharvaDhobale/farmoholic.git
-cd farmoholic
+# Compile and run the Java backend
+mvn spring-boot:run
+```
+The Spring Boot server will start on [http://localhost:8080](http://localhost:8080).
+You can access the in-memory database explorer at [http://localhost:8080/h2-console](http://localhost:8080/h2-console) (JDBC URL: `jdbc:h2:mem:kisankhata`, Username: `sa`, Password: leave empty).
 
-# 2. Install dependencies
+#### Step 2: Start the React Frontend Dev Server
+In a new terminal window:
+```bash
+# Install NPM dependencies
 npm install
 
-# 3. Start development server
+# Start Vite dev server with proxy support
 npm run dev
 ```
+The Vite server starts on [http://localhost:5173](http://localhost:5173). All `/api` requests are automatically proxied to the Java Spring Boot backend on port 8080.
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+---
 
-### Available Scripts
+### Building for Production (Single JAR Deployment)
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start local development server with HMR |
-| `npm run build` | Build production bundle (`dist/`) |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run OxLint static analysis |
+To bundle the entire full-stack application into a single executable JAR file:
+
+```bash
+# 1. Compile Vite frontend directly into Spring Boot static resources
+npm run build
+
+# 2. Package the Spring Boot application
+mvn package
+
+# 3. Run the complete JAR
+java -jar target/kisan-khata-0.0.1-SNAPSHOT.jar
+```
+Open [http://localhost:8080](http://localhost:8080) to access the fully working production app!
+
+---
+
+### Graceful Offline Fallback
+
+Kisan Khata is designed to be highly resilient. If the Spring Boot backend is offline or if the app is hosted as a static web preview (such as on Vercel), it **automatically falls back to browser `localStorage`**. Your profile details, farm projects, and crop expenses will still be fully saved, loaded, and functional without any server.
+
 
 ---
 

@@ -24,3 +24,15 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Java Maven Build ignores
+target/
+.mvn/
+*.class
+.project
+.classpath
+.factorypath
+.settings/
+*.jar
+*.war
+
