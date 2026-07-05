@@ -62,9 +62,14 @@ export default function App() {
           fetch('/api/settings')
         ]);
         
-        const profileData = profileRes.status === 200 ? await profileRes.json() : null;
-        const projectsData = await projectsRes.json();
-        const settingsData = await settingsRes.json();
+        // Safe helper to check if response is JSON (prevents SyntaxError on Vercel HTML redirects)
+        const isJsonResponse = (res: Response) => 
+          res.status === 200 && 
+          (res.headers.get('content-type')?.includes('application/json') || false);
+        
+        const profileData = isJsonResponse(profileRes) ? await profileRes.json() : null;
+        const projectsData = isJsonResponse(projectsRes) ? await projectsRes.json() : [];
+        const settingsData = isJsonResponse(settingsRes) ? await settingsRes.json() : loadSettings();
         
         setProfile(profileData);
         setProjects(projectsData);
@@ -200,7 +205,7 @@ export default function App() {
   }
 
   const activeProject = projects.find(p => p.id === activeProjectId) || null;
-  const t = translations[settings.language];
+  const t = translations[settings?.language] || translations['en'];
 
   // Weather simulation for the active location
   const activeState = activeProject ? activeProject.state : settings.state;
