@@ -55,3 +55,4 @@
 // [2026-07-02T22:00:25] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-03T09:03:11] feat(expenses): add offline expense logging with localStorage sync
 // [2026-07-06T20:18:48] feat(expenses): add offline expense logging with localStorage sync
+// [2026-07-10T10:26:54] refactor(formulas): modularize crop yield & profit estimation calculations
