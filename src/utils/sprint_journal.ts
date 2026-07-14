@@ -57,3 +57,4 @@
 // [2026-07-06T20:18:48] feat(expenses): add offline expense logging with localStorage sync
 // [2026-07-10T10:26:54] refactor(formulas): modularize crop yield & profit estimation calculations
 // [2026-07-10T22:51:53] feat(agronomy): add rule-based smart crop recommendation advisor
+// [2026-07-14T17:06:35] feat(apmc): integrate real-time APMC mandi market price ticker
