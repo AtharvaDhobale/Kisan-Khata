@@ -61,3 +61,4 @@
 // [2026-07-15T11:11:27] fix(i18n): resolve Marathi and Hindi translation encoding edge case
 // [2026-07-15T13:44:54] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-15T19:56:27] feat(agronomy): add rule-based smart crop recommendation advisor
+// [2026-07-15T14:43:44] feat(export): add CSV export and printable farm ledger report
