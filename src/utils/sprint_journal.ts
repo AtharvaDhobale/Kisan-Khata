@@ -62,3 +62,4 @@
 // [2026-07-15T13:44:54] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-15T19:56:27] feat(agronomy): add rule-based smart crop recommendation advisor
 // [2026-07-15T14:43:44] feat(export): add CSV export and printable farm ledger report
+// [2026-07-16T22:11:28] feat(apmc): integrate real-time APMC mandi market price ticker
