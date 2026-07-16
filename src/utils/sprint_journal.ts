@@ -64,3 +64,4 @@
 // [2026-07-15T14:43:44] feat(export): add CSV export and printable farm ledger report
 // [2026-07-16T22:11:28] feat(apmc): integrate real-time APMC mandi market price ticker
 // [2026-07-16T15:40:38] fix(location): handle fallback geolocation for Maharashtra districts
+// [2026-07-16T12:00:45] feat(export): add CSV export and printable farm ledger report
