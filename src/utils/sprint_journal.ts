@@ -67,3 +67,4 @@
 // [2026-07-16T12:00:45] feat(export): add CSV export and printable farm ledger report
 // [2026-07-17T12:55:38] style(ui): refine mobile responsive layout for farmer dashboard
 // [2026-07-17T16:09:33] fix(location): handle fallback geolocation for Maharashtra districts
+// [2026-07-21T20:08:41] fix(location): handle fallback geolocation for Maharashtra districts
