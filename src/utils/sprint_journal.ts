@@ -68,3 +68,4 @@
 // [2026-07-17T12:55:38] style(ui): refine mobile responsive layout for farmer dashboard
 // [2026-07-17T16:09:33] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-21T20:08:41] fix(location): handle fallback geolocation for Maharashtra districts
+// [2026-07-23T22:05:33] feat(expenses): add offline expense logging with localStorage sync
