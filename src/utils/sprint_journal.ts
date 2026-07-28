@@ -69,3 +69,4 @@
 // [2026-07-17T16:09:33] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-21T20:08:41] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-23T22:05:33] feat(expenses): add offline expense logging with localStorage sync
+// [2026-07-28T21:23:34] perf(dashboard): optimize SVG donut chart rendering for expense categories
