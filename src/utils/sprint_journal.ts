@@ -71,3 +71,4 @@
 // [2026-07-23T22:05:33] feat(expenses): add offline expense logging with localStorage sync
 // [2026-07-28T21:23:34] perf(dashboard): optimize SVG donut chart rendering for expense categories
 // [2026-07-30T18:37:43] fix(location): handle fallback geolocation for Maharashtra districts
+// [2026-07-30T13:19:23] style(ui): refine mobile responsive layout for farmer dashboard
