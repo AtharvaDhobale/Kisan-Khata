@@ -74,3 +74,4 @@
 // [2026-07-30T13:19:23] style(ui): refine mobile responsive layout for farmer dashboard
 // [2026-07-30T19:35:18] fix(i18n): resolve Marathi and Hindi translation encoding edge case
 // [2026-07-31T12:58:46] feat(expenses): add offline expense logging with localStorage sync
+// [2026-07-31T17:32:36] feat(expenses): add offline expense logging with localStorage sync
