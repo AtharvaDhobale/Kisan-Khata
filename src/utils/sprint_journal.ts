@@ -73,3 +73,4 @@
 // [2026-07-30T18:37:43] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-07-30T13:19:23] style(ui): refine mobile responsive layout for farmer dashboard
 // [2026-07-30T19:35:18] fix(i18n): resolve Marathi and Hindi translation encoding edge case
+// [2026-07-31T12:58:46] feat(expenses): add offline expense logging with localStorage sync
