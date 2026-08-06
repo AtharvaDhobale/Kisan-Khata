@@ -79,3 +79,4 @@
 // [2026-08-03T22:29:29] fix(location): handle fallback geolocation for Maharashtra districts
 // [2026-08-03T12:46:39] test(validator): add test coverage for farm project budget validator
 // [2026-08-04T22:51:10] style(ui): refine mobile responsive layout for farmer dashboard
+// [2026-08-06T14:54:20] feat(apmc): integrate real-time APMC mandi market price ticker
