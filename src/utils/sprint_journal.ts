@@ -82,3 +82,4 @@
 // [2026-08-06T14:54:20] feat(apmc): integrate real-time APMC mandi market price ticker
 // [2026-08-13T21:00:06] style(ui): refine mobile responsive layout for farmer dashboard
 // [2026-08-14T18:16:11] feat(apmc): integrate real-time APMC mandi market price ticker
+// [2026-08-17T12:45:01] feat(agronomy): add rule-based smart crop recommendation advisor
