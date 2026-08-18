@@ -205,18 +205,6 @@ export default function App() {
             {onboardName.trim() ? 'Enter Kisan Khata 🌱' : 'Quick Demo Login (Ramesh Kumar) 🌱'}
           </button>
         </div>
-      </div>
-    );
-  }
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
-        <div className="panel-card" style={{ maxWidth: '320px', width: '100%', textAlign: 'center', padding: '30px' }}>
-          <Sprout size={48} className="spin-anim" color="var(--primary)" style={{ margin: '0 auto 16px' }} />
-          <h3 style={{ color: 'var(--primary)', marginBottom: '8px', fontWeight: 800 }}>Loading Kisan Khata...</h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '12px', fontWeight: 500 }}>Connecting to secure farm ledger</p>
-        </div>
-      </div>
-    );
   }
 
   const activeProject = projects.find(p => p.id === activeProjectId) || null;
