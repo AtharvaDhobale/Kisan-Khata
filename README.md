@@ -1,13 +1,11 @@
-<div align="center">
+﻿<div align="center">
 
-<img src="https://img.shields.io/badge/किसान%20खाता-Kisan%20Khata-16a34a?style=for-the-badge&logo=leaf&logoColor=white" alt="Kisan Khata Banner" />
-
-<h1>🌾 Kisan Khata — किसान खाता</h1>
+<h1>ðŸŒ¾ Kisan Khata â€” à¤•à¤¿à¤¸à¤¾à¤¨ à¤–à¤¾à¤¤à¤¾</h1>
 
 <p align="center">
-  <strong>किसान का डिजिटल खाता बही — The Farmer's Digital Ledger</strong><br/>
-  A modern, multilingual farm management web application for Indian farmers.<br/>
-  Track crop expenses · Monitor live APMC mandi prices · Get AI agronomist advice
+  <strong>à¤•à¤¿à¤¸à¤¾à¤¨ à¤•à¤¾ à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤–à¤¾à¤¤à¤¾ à¤¬à¤¹à¥€ â€” The Farmer's Digital Ledger</strong><br/>
+  Farm expense tracking Â· Live APMC mandi prices Â· AI agronomist advice<br/>
+  Built for Indian farmers in 9 regional languages.
 </p>
 
 <p align="center">
@@ -21,11 +19,11 @@
 
 <p align="center">
   <a href="https://kisan-khata.vercel.app" target="_blank">
-    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-kisan--khata.vercel.app-16a34a?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Live%20Demo-kisan--khata.vercel.app-16a34a?style=for-the-badge" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://github.com/AtharvaDhobale/farmoholic" target="_blank">
-    <img src="https://img.shields.io/badge/📦%20Source%20Code-GitHub-181717?style=for-the-badge&logo=github" />
+  <a href="https://github.com/AtharvaDhobale/Kisan-Khata" target="_blank">
+    <img src="https://img.shields.io/badge/Source%20Code-GitHub-181717?style=for-the-badge&logo=github" />
   </a>
 </p>
 
@@ -33,277 +31,162 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Why Kisan Khata?](#why-kisan-khata)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [Supported Crops](#supported-crops)
-- [Deployment](#deployment)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## Overview
 
-**Kisan Khata** (किसान खाता — *Farmer's Account Book*) is a full-featured, offline-capable farm management Progressive Web Application built specifically for Indian farmers.
+**Kisan Khata** is a farm management web app built for Indian farmers. Every farmer knows what a *khata* is â€” the handwritten account book kept for every expense and income. This project brings that into the browser.
 
-The name says it all: every Indian farmer knows what a **khata** (खाता) is — it's the handwritten account book kept for every expense and income. Kisan Khata brings that into the digital age.
-
-Built with **React 19 + TypeScript + Vite**, it supports **9 Indian languages** and works seamlessly on both desktop and mobile.
+Built with React 19 + TypeScript + Vite, it supports 9 Indian languages and a Spring Boot backend. The app runs fully offline using localStorage when the backend is unavailable.
 
 ---
 
-## Why Kisan Khata?
+## Why I built this
 
-Indian farmers face 3 core problems this app solves:
+Most farm apps require constant internet or are English-only. Three problems I focused on solving:
 
-| Problem | Kisan Khata Solution |
+| Problem | How Kisan Khata handles it |
 |---|---|
-| 📒 Scattered paper expense tracking | Digital expense logger with 8 categories |
-| 💰 No visibility into mandi prices | Live APMC rate ticker for 8 states |
-| 🤔 No agronomist guidance available | AI-powered farming advisor in your language |
+| Paper-based expense tracking | Digital ledger with 8 expense categories |
+| No mandi rate visibility | Live APMC price ticker for 8 states |
+| No agronomist access | Rule-based AI advisor in the farmer's own language |
 
 ---
 
-## Key Features
+## Features
 
 | Feature | Description |
 |---|---|
-| 🌾 **Multi-Project Farm Tracking** | Manage multiple farm projects (Rabi/Kharif/Zaid) with individual budgets, crop types, land area, and sowing dates |
-| 💸 **Smart Expense Logger** | Record expenses across 8 categories: seeds, fertilizers, tractor, labor, irrigation, transport, rent, miscellaneous |
-| 📊 **Visual Analytics** | Interactive SVG donut chart showing expense breakdown by category with real-time legend |
-| 🏪 **Live Mandi Watch** | APMC market prices for your crop across nearby mandis with trend indicators (↑↓) |
-| 🤖 **AI Agronomist Advisor** | Rule-based AI recommendations for budget optimization, fertilizer usage, and profit maximization |
-| 💬 **Multilingual Chatbot** | In-app farming assistant responding in 9 Indian languages |
-| 📈 **Profitability Calculator** | Real-time ROI, net margin, and estimated profit using current mandi prices |
-| 🌦️ **Weather-Aware Tips** | Location-based weather simulation with farming tip banners |
-| 📄 **CSV Export & Print** | Export expense reports to CSV or print formatted reports |
-| 📍 **Auto Geolocation** | Auto-detect state/district for relevant mandi data |
-| 🌐 **9 Language Support** | English · हिंदी · मराठी · ਪੰਜਾਬੀ · తెలుగు · தமிழ் · বাংলা · ಕನ್ನಡ · ગુજરાતી |
-| 💾 **Offline-First** | All data in `localStorage` — works without internet |
+| Multi-Project Farm Tracking | Manage Rabi/Kharif/Zaid projects with budgets, crop type, land area, sowing dates |
+| Expense Logger | 8 categories: seeds, fertilizers, tractor, labor, irrigation, transport, rent, misc |
+| Visual Analytics | SVG donut chart showing expense breakdown per category |
+| Mandi Watch | APMC market prices across nearby mandis with trend indicators |
+| AI Agronomist | Rule-based recommendations for budget, fertilizer use, and profit |
+| Multilingual Chatbot | In-app farming assistant in 9 Indian languages |
+| Profit Calculator | Real-time ROI, net margin, and estimated profit |
+| Weather Tips | Location-based weather simulation with farming tip banners |
+| CSV Export & Print | Export expense reports or print formatted summaries |
+| Geolocation | Auto-detect state/district for relevant mandi data |
+| 9 Languages | English, Hindi, Marathi, Punjabi, Telugu, Tamil, Bengali, Kannada, Gujarati |
+| Offline-first | All data in localStorage â€” works without internet |
 
 ---
 
 ## Tech Stack
 
-| Category | Technology |
+| Category | Choice |
 |---|---|
-| **Frontend Framework** | React 19 with TypeScript |
-| **Build Tool** | Vite 8 |
-| **Styling** | Vanilla CSS with CSS Custom Properties (no UI library) |
-| **Icons** | Lucide React |
-| **State Management** | React Hooks (`useState`, `useEffect`, `useRef`) |
-| **Data Persistence** | Browser `localStorage` |
-| **Type Safety** | TypeScript 5.x with strict mode |
-| **Linting** | OxLint (ultra-fast Rust-based linter) |
-| **Deployment** | Vercel (zero-config, Edge Network) |
+| Frontend | React 19 + TypeScript |
+| Build | Vite 8 |
+| Styling | Vanilla CSS with CSS Custom Properties |
+| Icons | Lucide React |
+| State | React Hooks |
+| Persistence | Browser localStorage |
+| Linting | OxLint |
+| Deployment | Vercel |
 
 ---
 
-## Getting Started
+## Running locally
 
 ### Prerequisites
+- Node.js >= 18.x
+- Java 17 + Maven 3.8+ (only if running the Spring Boot backend)
 
-- **Java Development Kit (JDK)** version 17
-- **Apache Maven** version 3.8+ (already configured on command line)
-- **Node.js** ≥ 18.x
-- **npm** ≥ 9.x
+### Frontend only
 
-### Running the App Locally
-
-Kisan Khata can be run as a full-stack Spring Boot + React application.
-
-#### Step 1: Start the Spring Boot Backend
 ```bash
-# Compile and run the Java backend
-mvn spring-boot:run
-```
-The Spring Boot server will start on [http://localhost:8080](http://localhost:8080).
-You can access the in-memory database explorer at [http://localhost:8080/h2-console](http://localhost:8080/h2-console) (JDBC URL: `jdbc:h2:mem:kisankhata`, Username: `sa`, Password: leave empty).
-
-#### Step 2: Start the React Frontend Dev Server
-In a new terminal window:
-```bash
-# Install NPM dependencies
 npm install
-
-# Start Vite dev server with proxy support
 npm run dev
 ```
-The Vite server starts on [http://localhost:5173](http://localhost:5173). All `/api` requests are automatically proxied to the Java Spring Boot backend on port 8080.
 
----
+Opens at http://localhost:5173. Works fully offline with localStorage.
 
-### Building for Production (Single JAR Deployment)
-
-To bundle the entire full-stack application into a single executable JAR file:
+### Full stack (frontend + Spring Boot backend)
 
 ```bash
-# 1. Compile Vite frontend directly into Spring Boot static resources
+# Terminal 1 - backend
+mvn spring-boot:run
+
+# Terminal 2 - frontend
+npm install
+npm run dev
+```
+
+H2 console: http://localhost:8080/h2-console
+JDBC URL: jdbc:h2:mem:kisankhata | Username: sa | Password: (leave blank)
+
+### Production build
+
+```bash
 npm run build
-
-# 2. Package the Spring Boot application
 mvn package
-
-# 3. Run the complete JAR
 java -jar target/kisan-khata-0.0.1-SNAPSHOT.jar
 ```
-Open [http://localhost:8080](http://localhost:8080) to access the fully working production app!
-
----
-
-### Graceful Offline Fallback
-
-Kisan Khata is designed to be highly resilient. If the Spring Boot backend is offline or if the app is hosted as a static web preview (such as on Vercel), it **automatically falls back to browser `localStorage`**. Your profile details, farm projects, and crop expenses will still be fully saved, loaded, and functional without any server.
-
 
 ---
 
 ## Project Structure
 
 ```
-farmoholic/                        # Kisan Khata source repo
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   ├── ProjectForm.tsx        # Farm project add/edit modal
-│   │   ├── ExpenseForm.tsx        # Expense entry modal
-│   │   ├── MandiWatchPanel.tsx    # APMC mandi price dashboard
-│   │   └── AIAnalystPanel.tsx     # Kisan Khata AI advisor + chatbot
-│   ├── data/
-│   │   ├── mandiData.ts           # APMC mock price data + crop configs
-│   │   └── translations.ts        # Full i18n for 9 Indian languages
-│   ├── styles/
-│   │   ├── variables.css          # Design token CSS variables
-│   │   └── App.css                # Premium UI stylesheet
-│   ├── utils/
-│   │   └── helpers.ts             # Core logic: AI engine, storage, geolocation
-│   ├── App.tsx                    # Root application component
-│   └── main.tsx                   # React entry point
-├── index.html                     # SEO meta + Google Fonts
-├── vercel.json                    # Vercel deployment config
-├── vite.config.ts
-└── package.json
+Kisan-Khata/
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ components/
+â”‚   â”‚   â”œâ”€â”€ ProjectForm.tsx        # Add/edit farm project modal
+â”‚   â”‚   â”œâ”€â”€ ExpenseForm.tsx        # Expense entry modal
+â”‚   â”‚   â”œâ”€â”€ MandiWatchPanel.tsx    # APMC mandi price dashboard
+â”‚   â”‚   â””â”€â”€ AIAnalystPanel.tsx     # AI advisor + chatbot
+â”‚   â”œâ”€â”€ data/
+â”‚   â”‚   â”œâ”€â”€ mandiData.ts           # APMC mock prices + crop configs
+â”‚   â”‚   â””â”€â”€ translations.ts        # i18n for 9 Indian languages
+â”‚   â”œâ”€â”€ styles/
+â”‚   â”‚   â”œâ”€â”€ variables.css
+â”‚   â”‚   â””â”€â”€ App.css
+â”‚   â”œâ”€â”€ utils/
+â”‚   â”‚   â””â”€â”€ helpers.ts             # AI engine, storage, geolocation
+â”‚   â”œâ”€â”€ App.tsx
+â”‚   â””â”€â”€ main.tsx
+â”œâ”€â”€ vercel.json
+â”œâ”€â”€ vite.config.ts
+â””â”€â”€ package.json
 ```
-
----
-
-## Core Modules
-
-### 🧠 AI Advisor Engine (`utils/helpers.ts`)
-`generateAIAdvice()` analyzes each farm project and generates contextual advice in the farmer's preferred language. Evaluates:
-- **Cost-per-acre vs crop benchmarks**
-- **Category overspend** (fertilizers >30%, tractor >25%, labor >35%)
-- **Profitability forecast** using live mandi prices
-
-### 🏪 Mandi Data Engine (`data/mandiData.ts`)
-Simulates real-time APMC data with state/district/crop filtering:
-- `fetchMandiRates()` — location-aware price lookup
-- `cropBasePrices` — standard cost, yield, and price ranges for 10+ Indian crops
-- `fetchWeather()` — deterministic weather simulation by location
-
-### 🌍 Translations (`data/translations.ts`)
-Complete `TranslationSet` covering all UI strings in 9 languages:
-
-| Code | Language | App Title |
-|---|---|---|
-| `en` | English | Kisan Khata |
-| `hi` | हिंदी | किसान खाता |
-| `mr` | मराठी | किसान खाता |
-| `pa` | ਪੰਜਾਬੀ | ਕਿਸਾਨ ਖਾਤਾ |
-| `te` | తెలుగు | కిసాన్ ఖాతా |
-| `ta` | தமிழ் | கிசான் காத்தா |
-| `bn` | বাংলা | কিসান খাতা |
-| `kn` | ಕನ್ನಡ | ಕಿಸಾನ್ ಖಾತಾ |
-| `gu` | ગુજરાતી | કિસાન ખાતા |
 
 ---
 
 ## Supported Crops
 
-| Crop | ID | Avg Yield/Acre | Standard Cost/Acre |
-|---|---|---|---|
-| Wheat (गेहूं) | `wheat` | 15 Q | ₹14,000 |
-| Paddy/Rice (धान) | `paddy` | 18 Q | ₹18,000 |
-| Maize (मक्का) | `maize` | 20 Q | ₹12,000 |
-| Cotton (कपास) | `cotton` | 6 Q | ₹25,000 |
-| Soybean (सोयाबीन) | `soybean` | 10 Q | ₹15,000 |
-| Sugarcane (गन्ना) | `sugarcane` | 300 Q | ₹35,000 |
-| Groundnut (मूंगफली) | `groundnut` | 8 Q | ₹20,000 |
-| Onion (प्याज) | `onion` | 80 Q | ₹22,000 |
-| Tomato (टमाटर) | `tomato` | 120 Q | ₹28,000 |
-| Chilli (मिर्च) | `chilli` | 12 Q | ₹32,000 |
+| Crop | Avg Yield/Acre | Standard Cost/Acre |
+|---|---|---|
+| Wheat | 15 Q | Rs.14,000 |
+| Paddy/Rice | 18 Q | Rs.18,000 |
+| Maize | 20 Q | Rs.12,000 |
+| Cotton | 6 Q | Rs.25,000 |
+| Soybean | 10 Q | Rs.15,000 |
+| Sugarcane | 300 Q | Rs.35,000 |
+| Groundnut | 8 Q | Rs.20,000 |
+| Onion | 80 Q | Rs.22,000 |
+| Tomato | 120 Q | Rs.28,000 |
+| Chilli | 12 Q | Rs.32,000 |
 
 ---
 
-## Deployment
+## What's next
 
-### Deploy to Vercel (Recommended)
-
-```bash
-# Install Vercel CLI
-npm install -g vercel
-
-# Login (if not already)
-vercel login
-
-# Deploy to production
-vercel --prod --yes
-```
-
-**Build Configuration:**
-
-| Setting | Value |
-|---|---|
-| Framework | Vite |
-| Build Command | `npm run build` |
-| Output Directory | `dist` |
-| Install Command | `npm install` |
-
----
-
-## Roadmap
-
-- [ ] **PWA Support** — Service worker for offline usage and home-screen install
-- [ ] **Real APMC API** — Integration with data.gov.in for live mandi prices
-- [ ] **Cloud Sync** — Firebase/Supabase backend for cross-device data sync
-- [ ] **Voice Input** — Web Speech API for hands-free expense logging in Hindi
-- [ ] **Loan Calculator** — Kisan Credit Card (KCC) EMI planner module
-- [ ] **Harvest Scheduler** — Calendar view with crop-specific advisory timelines
-- [ ] **Photo Receipts** — Camera capture for expense receipt storage
-- [ ] **SMS Alerts** — Mandi price alerts via SMS for farmers without smartphones
-
----
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature-name`
-3. Commit with conventional commits: `git commit -m 'feat: add voice input'`
-4. Push: `git push origin feature/your-feature-name`
-5. Open a Pull Request
+- [ ] PWA service worker for offline install
+- [ ] Real APMC API (data.gov.in)
+- [ ] Firebase/Supabase for cross-device sync
+- [ ] Voice input in Hindi via Web Speech API
+- [ ] Kisan Credit Card (KCC) EMI planner
+- [ ] Harvest calendar with crop advisory timelines
+- [ ] Photo receipt capture
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+MIT
 
 ---
 
 <div align="center">
-
-**जय किसान 🌾 — Built with ❤️ for Indian Farmers**
-
-<sub>Kisan Khata · किसान खाता · React · TypeScript · Vite · Vercel</sub>
-
+<strong>Jai Kisan - Built for Indian Farmers</strong><br/>
+<sub>React Â· TypeScript Â· Vite Â· Vercel</sub>
 </div>

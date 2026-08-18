@@ -32,9 +32,9 @@ export interface FarmProject {
 }
 
 // Storage Helpers
-const STORAGE_KEY = 'farmoholic_projects';
-const SETTINGS_KEY = 'farmoholic_settings';
-const PROFILE_KEY = 'farmoholic_profile';
+const STORAGE_KEY = 'kisan_khata_projects';
+const SETTINGS_KEY = 'kisan_khata_settings';
+const PROFILE_KEY = 'kisan_khata_profile';
 
 export interface UserSettings {
   language: Language;
