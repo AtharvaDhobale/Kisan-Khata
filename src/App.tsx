@@ -205,6 +205,8 @@ export default function App() {
             {onboardName.trim() ? 'Enter Kisan Khata 🌱' : 'Quick Demo Login (Ramesh Kumar) 🌱'}
           </button>
         </div>
+      </div>
+    );
   }
 
   const activeProject = projects.find(p => p.id === activeProjectId) || null;
