@@ -38,82 +38,122 @@ import {
 import './styles/App.css';
 
 export default function App() {
-  const [profile, setProfile] = useState<FarmerProfile | null>(null);
+  const [profile, setProfile] = useState<FarmerProfile | null>(() => loadProfile());
   const [onboardName, setOnboardName] = useState('');
   const [onboardLang, setOnboardLang] = useState<Language>('en');
-  const [projects, setProjects] = useState<FarmProject[]>([]);
-  const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
-  const [settings, setSettings] = useState<UserSettings>(loadSettings());
+  const [projects, setProjects] = useState<FarmProject[]>(() => {
+    const loaded = loadProjects();
+    if (loaded && loaded.length > 0) return loaded;
+    return [
+      {
+        id: 'proj_demo_1',
+        name: 'Rabi Wheat Season',
+        crop: 'Wheat',
+        season: 'Rabi',
+        area: 4.5,
+        budget: 65000,
+        expectedYield: 68,
+        sowingDate: '2025-11-15',
+        state: 'Maharashtra',
+        district: 'Pune',
+        expenses: [
+          { id: 'exp_1', date: '2025-11-20', category: 'seeds', description: 'Certified HD-2967 Seed Bags', amount: 8500 },
+          { id: 'exp_2', date: '2025-11-28', category: 'fertilizer', description: 'DAP & Urea Bags', amount: 14200 },
+          { id: 'exp_3', date: '2025-12-10', category: 'tractor', description: 'Tractor Tilling & Rotavator', amount: 9000 },
+          { id: 'exp_4', date: '2026-01-05', category: 'labor', description: 'Weeding & Irrigation Labor', amount: 7500 }
+        ]
+      }
+    ];
+  });
+  const [activeProjectId, setActiveProjectId] = useState<string | null>(() => {
+    const loaded = loadProjects();
+    return loaded && loaded.length > 0 ? loaded[0].id : 'proj_demo_1';
+  });
+  const [settings, setSettings] = useState<UserSettings>(() => loadSettings());
   const [isLoadingLocation, setIsLoadingLocation] = useState(false);
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [isInitialLoading, setIsInitialLoading] = useState(false);
   
   // Modals visibility
   const [showProjectModal, setShowProjectModal] = useState(false);
   const [showExpenseModal, setShowExpenseModal] = useState(false);
   const [editingProject, setEditingProject] = useState<FarmProject | undefined>(undefined);
 
-  // Load from Spring Boot API on mount (fallback to localStorage if server is offline)
+  // Background sync with Spring Boot API if available
   useEffect(() => {
-    const initLoad = async () => {
+    const checkApi = async () => {
       try {
+        const isJsonResponse = (res: Response | null) => 
+          res && res.status === 200 && 
+          (res.headers.get('content-type')?.includes('application/json') || false);
+
         const [profileRes, projectsRes, settingsRes] = await Promise.all([
-          fetch('/api/profile'),
-          fetch('/api/projects'),
-          fetch('/api/settings')
+          fetch('/api/profile').catch(() => null),
+          fetch('/api/projects').catch(() => null),
+          fetch('/api/settings').catch(() => null)
         ]);
         
-        // Safe helper to check if response is JSON (prevents SyntaxError on Vercel HTML redirects)
-        const isJsonResponse = (res: Response) => 
-          res.status === 200 && 
-          (res.headers.get('content-type')?.includes('application/json') || false);
-        
-        const profileData = isJsonResponse(profileRes) ? await profileRes.json() : null;
-        const projectsData = isJsonResponse(projectsRes) ? await projectsRes.json() : [];
-        const settingsData = isJsonResponse(settingsRes) ? await settingsRes.json() : loadSettings();
-        
-        setProfile(profileData);
-        setProjects(projectsData);
-        setSettings(settingsData);
-        
-        if (projectsData.length > 0) {
-          setActiveProjectId(projectsData[0].id);
+        if (isJsonResponse(profileRes)) {
+          const profileData = await profileRes!.json();
+          if (profileData?.name) {
+            setProfile(profileData);
+            saveProfile(profileData);
+          }
         }
-      } catch (error) {
-        console.warn("Failed to load from Spring Boot API, falling back to localStorage", error);
-        const localProfile = loadProfile();
-        setProfile(localProfile);
-        const localProjs = loadProjects();
-        setProjects(localProjs);
-        setSettings(loadSettings());
-        if (localProjs.length > 0) {
-          setActiveProjectId(localProjs[0].id);
+        if (isJsonResponse(projectsRes)) {
+          const projectsData = await projectsRes!.json();
+          if (Array.isArray(projectsData) && projectsData.length > 0) {
+            setProjects(projectsData);
+            saveProjects(projectsData);
+            setActiveProjectId(projectsData[0].id);
+          }
         }
-      } finally {
-        setIsInitialLoading(false);
+        if (isJsonResponse(settingsRes)) {
+          const settingsData = await settingsRes!.json();
+          if (settingsData) {
+            setSettings(settingsData);
+            saveSettings(settingsData);
+          }
+        }
+      } catch (e) {
+        // Safe offline mode
       }
     };
-    initLoad();
+    checkApi();
   }, []);
 
   // Save projects to localStorage whenever they change
   useEffect(() => {
-    if (!isInitialLoading) {
+    if (projects.length > 0) {
       saveProjects(projects);
     }
-  }, [projects, isInitialLoading]);
+  }, [projects]);
 
   // Save settings whenever they change
   useEffect(() => {
-    if (!isInitialLoading) {
-      saveSettings(settings);
-      // Sync settings to Spring Boot API in background
-      fetch('/api/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(settings)
-      }).catch(e => console.warn("Failed to sync settings to API", e));
-    }
-  }, [settings, isInitialLoading]);
+    saveSettings(settings);
+    fetch('/api/settings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(settings)
+    }).catch(() => {});
+  }, [settings]);
+
+  const handleStartFarming = (nameToUse: string, langToUse: Language) => {
+    const finalName = nameToUse.trim() || 'Ramesh Kumar';
+    const newProfile: FarmerProfile = { name: finalName, language: langToUse, state: 'Maharashtra', district: 'Pune' };
+    saveProfile(newProfile);
+    setProfile(newProfile);
+    const updatedSettings = { ...settings, language: langToUse };
+    setSettings(updatedSettings);
+    saveSettings(updatedSettings);
+    
+    // Background API sync
+    fetch('/api/profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newProfile)
+    }).catch(() => {});
+  };
 
   if (!profile) {
     return (
@@ -124,11 +164,11 @@ export default function App() {
               <Sprout size={36} color="white" />
             </div>
             <h2 className="onboard-title">किसान खाता</h2>
-            <p className="onboard-subtitle">किसान का डिजिटल खाता बही — Your smart farm ledger. Set up your profile to get started.</p>
+            <p className="onboard-subtitle">किसान का डिजिटल खाता बही — Your smart farm ledger. Sign in to get started.</p>
           </div>
 
           <div className="form-group">
-            <label htmlFor="onboard-name">Your Name</label>
+            <label htmlFor="onboard-name">Your Name / किसान का नाम</label>
             <input
               id="onboard-name"
               type="text"
@@ -136,11 +176,14 @@ export default function App() {
               value={onboardName}
               onChange={e => setOnboardName(e.target.value)}
               placeholder="Enter your name (e.g. Ramesh Kumar)"
+              onKeyDown={e => {
+                if (e.key === 'Enter') handleStartFarming(onboardName, onboardLang);
+              }}
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="onboard-lang">Preferred Language</label>
+            <label htmlFor="onboard-lang">Preferred Language / भाषा</label>
             <select
               id="onboard-lang"
               className="form-control"
@@ -156,43 +199,15 @@ export default function App() {
           <button
             className="btn btn-primary"
             style={{ width: '100%', marginTop: '8px', padding: '14px', fontSize: '16px' }}
-            onClick={async () => {
-              if (onboardName.trim()) {
-                const newProfile = { name: onboardName, language: onboardLang, state: 'Maharashtra', district: 'Pune' };
-                saveProfile(newProfile);
-                setProfile(newProfile);
-                const updatedSettings = { ...settings, language: onboardLang };
-                setSettings(updatedSettings);
-                
-                // Sync profile and settings to API
-                try {
-                  await Promise.all([
-                    fetch('/api/profile', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify(newProfile)
-                    }),
-                    fetch('/api/settings', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify(updatedSettings)
-                    })
-                  ]);
-                } catch (e) {
-                  console.warn("Failed to sync onboarding details to Spring Boot API", e);
-                }
-              }
-            }}
+            onClick={() => handleStartFarming(onboardName, onboardLang)}
           >
             <Sprout size={18} />
-            Start Farming 🌱
+            {onboardName.trim() ? 'Enter Kisan Khata 🌱' : 'Quick Demo Login (Ramesh Kumar) 🌱'}
           </button>
         </div>
       </div>
     );
   }
-
-  if (isInitialLoading) {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-primary)' }}>
         <div className="panel-card" style={{ maxWidth: '320px', width: '100%', textAlign: 'center', padding: '30px' }}>
